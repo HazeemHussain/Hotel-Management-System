@@ -71,11 +71,15 @@ public class GeneratingCustomerBill {
             JOptionPane.showMessageDialog(null, "Could not generate the bill");
         }
         
+        
+        JOptionPane.showMessageDialog(null, "Bill has been created in the project folder");
        
         
     }
     
-    public static void main(String[] args) {
-        generateBill(1, "Hazeem" , "1234556", "AS123456", "21", "Double", "2", "50", "100");
-    }
+    
+    
+//    public static void main(String[] args) {
+//        generateBill(1, "Hazeem" , "1234556", "AS123456", "21", "Double", "2", "50", "100");
+//    }
 }

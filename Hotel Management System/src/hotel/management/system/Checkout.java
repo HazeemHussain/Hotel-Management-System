@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import DatabaseClasses.SelectData;
 import Classes.GeneratingCustomerBill;
 
 /**
@@ -97,7 +96,7 @@ public class Checkout extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CUSTOMER DETAILS");
+        jLabel2.setText("CUSTOMER STAYING IN HOTEL");
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -129,7 +128,7 @@ public class Checkout extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IDNO", "Name", "Phone Num", "ID Proof", "Room Price", "Total Price", "Room No", "Bed Type", "Days Stayed"
+                "IDNO", "Name", "Phone Num", "ID Proof", "Room Price", "Room No", "Bed Type", "Days Stayed", "Checked Out"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -271,8 +270,7 @@ public class Checkout extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(126, 126, 126)
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel10))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(searchSelectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(44, 44, 44)
@@ -408,8 +406,8 @@ public class Checkout extends javax.swing.JFrame {
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString(1), rs.getString(2),
                     rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(7), rs.getString(8),
-                    rs.getString(9), rs.getString(10)});
+                    rs.getString(5), rs.getString(8),
+                    rs.getString(9), rs.getString(10), rs.getString(11)});
             }
 
         } catch (ClassNotFoundException ex) {
@@ -465,6 +463,7 @@ public class Checkout extends javax.swing.JFrame {
 
             } else {
                 JOptionPane.showMessageDialog(null, "ROOM IS NOT BOOKED OR DOES NOT EXIST");
+                searchCustTextField.setText("");
             }
 
         } catch (ClassNotFoundException ex) {
@@ -508,7 +507,7 @@ public class Checkout extends javax.swing.JFrame {
                 
                 //Genrating customer bill
                 GeneratingCustomerBill.generateBill(id, name, phoneNo, driverId, roomNo, bedType, daysStayed, driverId, totalPrice);
-                JOptionPane.showMessageDialog(null, "BILL PDF HAS BEEN GENERATED IN PROJECT FOLDER");
+               // JOptionPane.showMessageDialog(null, "BILL PDF HAS BEEN GENERATED IN PROJECT FOLDER");
                 //Generating a new checkout window
                 setVisible(false);
                 new Checkout().setVisible(true);
@@ -518,7 +517,6 @@ public class Checkout extends javax.swing.JFrame {
            }
 
         }
-
 
     }//GEN-LAST:event_checkOutButtonActionPerformed
 

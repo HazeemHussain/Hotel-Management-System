@@ -5,6 +5,7 @@
 package hotel.management.system;
 
 import javax.swing.JOptionPane;
+import Classes.GeneratingCustomerBill;
 
 /**
  *
@@ -70,7 +71,7 @@ public class Menu extends javax.swing.JFrame {
 
         totalBillButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         totalBillButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Bill Button.png"))); // NOI18N
-        totalBillButton.setText("TOTAL BILL");
+        totalBillButton.setText("CUSTOMERS BILL");
         totalBillButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalBillButtonActionPerformed(evt);
@@ -96,19 +97,19 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(closebutton)
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(roomsAvailableButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(checkinButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(342, 342, 342)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkOutButton)
-                            .addComponent(totalBillButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(totalBillButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(314, 314, 314)
+                            .addComponent(roomsAvailableButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(350, 350, 350)
+                            .addComponent(checkinButton))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(342, 342, 342)
+                            .addComponent(checkOutButton))))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +124,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(checkinButton)
                 .addGap(52, 52, 52)
                 .addComponent(checkOutButton)
-                .addGap(52, 52, 52)
+                .addGap(51, 51, 51)
                 .addComponent(totalBillButton)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         pack();
