@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
@@ -17,36 +19,50 @@ public class GeneratingCustomerBill {
     
     
     
-    public static void generateBill(String customerName, String customerPhoneNo, String driversId, String roomNo,
-                                     String bedType , String daysStayed, String totalPrice) {
+    public static void generateBill(int billId, String customerName, String customerPhoneNo, String driversId, String roomNo,
+                                     String bedType , String daysStayed, String pricePerDay, String totalPrice) {
          com.itextpdf.text.Document document = new com.itextpdf.text.Document();
         
         String path = "Invoice";
         
         try {
-              PdfWriter.getInstance(document, new FileOutputStream(path + "" + customerName + ".pdf"));
+              PdfWriter.getInstance(document, new FileOutputStream(path + "For Customer" + billId + ".pdf"));
              document.open();
              
-             Paragraph para1 = new Paragraph("HOTEL MANAGEMENT SYSTEM");
+             //Paragraph 1
+             Paragraph para1 = new Paragraph("****************************************************************************************************************\n"
+                                           + "                                                     HOTEL MANAGEMENT SYSTEM" +
+                                           "\n****************************************************************************************************************\n");
              document.add(para1);
              
-             Paragraph para2 = new Paragraph("CUSTOMER BILL");
+             //Second Paragraph
+             Paragraph para2 = new Paragraph("CUSTOMER INVOICE \n\n CUSTOMER DETAILS\n");
+             para2.setAlignment(Element.ALIGN_CENTER);
              document.add(para2);
-             
-             Paragraph para3 = new Paragraph("CUSTOMER NAME: " + customerName + "\nCUSTOMER MOBILE NUMBER: " + customerPhoneNo 
-                     +  "\nCUSTOMER ID: " + driversId);
+           
+             //Third Paragraph
+             Paragraph para3 = new Paragraph("Customer Name: " + customerName + "\nCustomer Mobile NO: " + customerPhoneNo 
+                     +  "\nCustomer's ID: " + driversId);
+             para3.setAlignment(Element.ALIGN_CENTER);
              document.add(para3);
              
-             
-             Paragraph para4 = new Paragraph("\nROOM STAYED IN: " + roomNo + "\nBED TYPE: " + 
-                            bedType + "\nDays Stayed: " + daysStayed);
+             //Fourth Paragraph
+             Paragraph para4 = new Paragraph("****************************************************************************************************************"
+                                                + "\nROOMS DETAILS\n"
+                                                + "\nRoom Stayed In -> " + roomNo + "\nBed Type -> '" 
+                                                + bedType + "'\nDays Stayed: " + daysStayed + "\nPrice Per Day = " + pricePerDay 
+                                                + "\nTotal Price = " + totalPrice);
+             para4.setAlignment(Element.ALIGN_CENTER);
              document.add(para4);
              
-             Paragraph para5 = new Paragraph("THANK YOU FOR USING OUR SERVICE!");
+             //Fifth Paragraph
+             Paragraph para5 = new Paragraph("\n****************************************************************************************************************"
+                                            + "\n                                        THANK YOU FOR USING OUR HOTEL SERVICE\n"
+                                            + "****************************************************************************************************************");
              document.add(para5);
          
         
-        
+             //Closing pdf
              document.close();
             
             
@@ -60,6 +76,6 @@ public class GeneratingCustomerBill {
     }
     
     public static void main(String[] args) {
-        generateBill("Hazeem" , "1234556", "AS123456", "21", "Double", "2", "100");
+        generateBill(1, "Hazeem" , "1234556", "AS123456", "21", "Double", "2", "50", "100");
     }
 }

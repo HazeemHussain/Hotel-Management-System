@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import DatabaseClasses.SelectData;
+import Classes.GeneratingCustomerBill;
 
 /**
  *
@@ -25,6 +26,9 @@ public class Checkout extends javax.swing.JFrame {
     /**
      * Creates new form CheckoutClass
      */
+    
+    String bedType; 
+    int id = 0;
     public Checkout() {
         initComponents();
         //searchCustTextField.setEditable(false);
@@ -34,8 +38,7 @@ public class Checkout extends javax.swing.JFrame {
         roomStayingTextField.setEditable(false);
         daysStayedTextField.setEditable(false);
         totalPriceTextField.setEditable(false);
-        
-        
+
     }
 
     /**
@@ -126,11 +129,11 @@ public class Checkout extends javax.swing.JFrame {
 
             },
             new String [] {
-                "IDNO", "Name", "Phone Num", "ID Proof", "Room Price", "Food Price", "Total Price", "Room No", "Bed Type", "Days Stayed"
+                "IDNO", "Name", "Phone Num", "ID Proof", "Room Price", "Total Price", "Room No", "Bed Type", "Days Stayed"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,7 +153,6 @@ public class Checkout extends javax.swing.JFrame {
             jTable.getColumnModel().getColumn(6).setResizable(false);
             jTable.getColumnModel().getColumn(7).setResizable(false);
             jTable.getColumnModel().getColumn(8).setResizable(false);
-            jTable.getColumnModel().getColumn(9).setResizable(false);
         }
 
         custPhoneNoTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -374,8 +376,7 @@ public class Checkout extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
@@ -400,16 +401,15 @@ public class Checkout extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             //select data from customers table
-            ResultSet rs = SelectData.getData("SELECT *FROM CUSTOMERDETAILS");
+            ResultSet rs = SelectData.getData("SELECT *FROM CUSTOMERDETAILS WHERE CHECKOUT IS NULL");
             DefaultTableModel model = (DefaultTableModel) jTable.getModel();
 
             //Reading data from rooms table and displaying it 
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getString(1), rs.getString(2),
-                                          rs.getString(3), rs.getString(4),
-                                          rs.getString(5), rs.getString(6),
-                                          rs.getString(7), rs.getString(8),
-                                          rs.getString(9), rs.getString(10)});
+                    rs.getString(3), rs.getString(4),
+                    rs.getString(5), rs.getString(7), rs.getString(8),
+                    rs.getString(9), rs.getString(10)});
             }
 
         } catch (ClassNotFoundException ex) {
@@ -421,8 +421,8 @@ public class Checkout extends javax.swing.JFrame {
 
     private void driverIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverIdTextFieldActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_driverIdTextFieldActionPerformed
 
     private void custPhoneNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custPhoneNoTextFieldActionPerformed
@@ -456,26 +456,24 @@ public class Checkout extends javax.swing.JFrame {
                 driverIdTextField.setText(rs.getString(4));
                 roomStayingTextField.setText(rs.getString(8));
                 daysStayedTextField.setText(rs.getString(10));
-                
+                bedType = rs.getString(9);
+                id = rs.getInt(1);
+
                 //Calculating the total room price of the user
                 int totalPrice = Integer.parseInt(rs.getString(5)) * Integer.parseInt(rs.getString(10));
                 totalPriceTextField.setText(String.valueOf(totalPrice));
-                
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "ROOM IS NOT BOOKED OR DOES NOT EXIST");
             }
-            
-            
-            
+
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, ex);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_custSearchButtonActionPerformed
 
     //Clear button. Clears all the fieldss
@@ -494,25 +492,34 @@ public class Checkout extends javax.swing.JFrame {
         String roomNo = roomStayingTextField.getText();
         String daysStayed = daysStayedTextField.getText();
         String totalPrice = totalPriceTextField.getText();
-        
-        
-        String query1 = "UDPATE CUSTOMERDETAILS SET TOTALAMOUNT = '" + totalPrice + "'";
-        String query2 = "UPDATE ROOMS SET STATUS = 'Not Booked WHERE ROOMNO = '" + roomNo + "'";
-        try {
+
+        if (searchCustTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "SELECT A CUSTOMER BEFORE CHECKING OUT");
+
+        } else {
             
-            //Updating the rooms and the customer details when the customer has checked out
-            InsertUpdateDelete.setData(query1, "");
-            InsertUpdateDelete.setData(query2, "");
-            
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Checkout.class.getName()).log(Level.SEVERE, null, ex);
+           String query1 = "UPDATE CUSTOMERDETAILS SET TOTALAMOUNT = " + totalPrice + ", CHECKOUT = 'YES' WHERE IDNO = " + id + ""; 
+           String query2 = "UPDATE ROOMS SET STATUS = 'Not Booked' WHERE ROOMNO = '" + roomNo + "'";
+            try {
+
+               // Updating the rooms and the customer details when the customer has checked out
+                InsertUpdateDelete.setData(query1, "");
+                InsertUpdateDelete.setData(query2, "");
+                
+                //Genrating customer bill
+                GeneratingCustomerBill.generateBill(id, name, phoneNo, driverId, roomNo, bedType, daysStayed, driverId, totalPrice);
+                JOptionPane.showMessageDialog(null, "BILL PDF HAS BEEN GENERATED IN PROJECT FOLDER");
+                //Generating a new checkout window
+                setVisible(false);
+                new Checkout().setVisible(true);
+
+            } catch (ClassNotFoundException ex) {
+               JOptionPane.showConfirmDialog(null, ex);
+           }
+
         }
-        
-        com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
-        
-        String path = name + "Invoice.pdf";
-        
+
+
     }//GEN-LAST:event_checkOutButtonActionPerformed
 
     private void custNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custNameTextFieldActionPerformed

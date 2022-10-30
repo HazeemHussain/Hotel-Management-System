@@ -159,8 +159,6 @@ public class UsersSignup extends javax.swing.JFrame {
             userNameTextField.setText("");
             passwordTextField.setText("");
             
-            
-            
         } else {
             try {
                 
