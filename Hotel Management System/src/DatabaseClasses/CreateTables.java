@@ -99,7 +99,7 @@ public class CreateTables {
             } else {
                 //Creating table for customers in hotel
                 this.statement.addBatch("CREATE TABLE CUSTOMERDETAILS (IDNO INT, NAME  VARCHAR(50), PHONENUMBER VARCHAR(20), " +
-                                         "DRIVERSID VARCHAR(20), ROOMPRICE INT, FOODPRICE INT, TOTALAMOUNT INT, ROOMNO VARCHAR(10), BED_TYPE VARCHAR(50), NO_OF_DAYS INT)");
+                                         "DRIVERSID VARCHAR(20), ROOMPRICE INT, FOODPRICE INT, TOTALAMOUNT INT, ROOMNO VARCHAR(10), BED_TYPE VARCHAR(50), NO_OF_DAYS INT, CHECKOUT VARCHAR(10))");
                 this.statement.executeBatch();
             }
 

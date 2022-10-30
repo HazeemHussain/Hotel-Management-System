@@ -70,7 +70,7 @@ public class InsertUpdateDelete {
 //        setData("INSERT INTO USERLOGIN VALUES ('aut', 'aut123'), "
 //                + "('hazeem', 'hazeem123') ", "Inserted values");
 
-          deleteTable ("CUSTOMERDETAILS", "Table deleted");
+         // deleteTable ("CUSTOMERDETAILS", "Table deleted");
            //deleteTable ("rooms", "Table deleted");
           
           //inserting values into rooms table
@@ -96,7 +96,7 @@ public class InsertUpdateDelete {
 //                  + "('19', 'Appartment', 1000 , 'Not Booked'),   "
 //                  + "('20', 'Appartment', 1000 , 'Not Booked')  ", "Values have been inserted");
 
-//setData("UPDATE ROOMS SET STATUS = 'Not Booked' WHERE ROOMNO = '07'", "Updated");
+setData("UPDATE ROOMS SET STATUS = 'Not Booked' WHERE ROOMNO = '04'", "Updated");
 
 
                         

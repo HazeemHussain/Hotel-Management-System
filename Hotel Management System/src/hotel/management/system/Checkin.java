@@ -528,11 +528,19 @@ public class Checkin extends javax.swing.JFrame {
             //If user details are correct then entering user details in the databse
             if (close == 0) {
                 //Inserting customer details into "Customer details table
+                
+                
+                
                 Query3 = "INSERT INTO CUSTOMERDETAILS (IDNO, NAME, PHONENUMBER, DRIVERSID, ROOMPRICE, ROOMNO, BED_TYPE, NO_OF_DAYS) VALUES "
                         + "( " + id + " , '" + custName + "' , '" + phoneNum + "' , "
                         + " '" + driverID + "' , " + roomPrice + " , '" + roomNum + "' , "
                         + " '" + roomType + "' , " + noOfDays + " )";
+                //Update the customer details table
                 InsertUpdateDelete.setData(Query3, "ROOM NO: " + roomNum + " HAS BEEN BOOKED FOR " + custName);
+                
+                //Clearing checkin frame fields
+                setVisible(false);
+                new Checkin().setVisible(true);
 
                 //Changing the status of the room to booked if the user confirmed the details
                 Query2 = "UPDATE ROOMS SET STATUS = 'Booked' WHERE ROOMNO = '" + roomNum + "'";

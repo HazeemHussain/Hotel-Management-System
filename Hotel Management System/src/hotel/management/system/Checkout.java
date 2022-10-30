@@ -4,6 +4,7 @@
  */
 package hotel.management.system;
 
+import DatabaseClasses.InsertUpdateDelete;
 import DatabaseClasses.SelectData;
 import java.awt.Font;
 import java.sql.ResultSet;
@@ -26,6 +27,15 @@ public class Checkout extends javax.swing.JFrame {
      */
     public Checkout() {
         initComponents();
+        //searchCustTextField.setEditable(false);
+        custNameTextField.setEditable(false);
+        driverIdTextField.setEditable(false);
+        custPhoneNoTextField.setEditable(false);
+        roomStayingTextField.setEditable(false);
+        daysStayedTextField.setEditable(false);
+        totalPriceTextField.setEditable(false);
+        
+        
     }
 
     /**
@@ -47,6 +57,22 @@ public class Checkout extends javax.swing.JFrame {
         closebutton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        custPhoneNoTextField = new javax.swing.JTextField();
+        custNameTextField = new javax.swing.JTextField();
+        driverIdTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        daysStayedTextField = new javax.swing.JTextField();
+        roomStayingTextField = new javax.swing.JTextField();
+        totalPriceTextField = new javax.swing.JTextField();
+        searchCustTextField = new javax.swing.JTextField();
+        searchSelectionComboBox = new javax.swing.JComboBox<>();
+        custSearchButton = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        clearDataButton = new javax.swing.JButton();
+        checkOutButton = new javax.swing.JButton();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -127,59 +153,229 @@ public class Checkout extends javax.swing.JFrame {
             jTable.getColumnModel().getColumn(9).setResizable(false);
         }
 
+        custPhoneNoTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custPhoneNoTextFieldActionPerformed(evt);
+            }
+        });
+
+        custNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custNameTextFieldActionPerformed(evt);
+            }
+        });
+
+        driverIdTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                driverIdTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("ROOM STAYING IN");
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("DAYS STAYED");
+
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("TOTAL PRICE");
+
+        daysStayedTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daysStayedTextFieldActionPerformed(evt);
+            }
+        });
+
+        roomStayingTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomStayingTextFieldActionPerformed(evt);
+            }
+        });
+
+        totalPriceTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalPriceTextFieldActionPerformed(evt);
+            }
+        });
+
+        searchCustTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCustTextFieldActionPerformed(evt);
+            }
+        });
+
+        searchSelectionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Room Number", "Customer Name" }));
+
+        custSearchButton.setText("SEARCH");
+        custSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                custSearchButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel10.setText("SEARCH CUSTOMER");
+
+        clearDataButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        clearDataButton.setText("CLEAR DATA");
+        clearDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearDataButtonActionPerformed(evt);
+            }
+        });
+
+        checkOutButton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        checkOutButton.setText("CHECK OUT");
+        checkOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkOutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(321, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(8, 8, 8)))
-                .addGap(186, 186, 186)
-                .addComponent(closebutton)
-                .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(304, 304, 304)
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(218, 218, 218)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closebutton)
+                        .addGap(59, 59, 59))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(348, 348, 348)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(252, 252, 252)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(126, 126, 126)
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(searchSelectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(44, 44, 44)
+                                        .addComponent(searchCustTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(custSearchButton))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(driverIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(custPhoneNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(custNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(35, 35, 35)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel9)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(checkOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(clearDataButton)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(roomStayingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(daysStayedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(totalPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 159, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(closebutton)
-                        .addComponent(backButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addGap(46, 46, 46)
-                .addComponent(jLabel3)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel4)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchCustTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchSelectionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(custSearchButton)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(17, 17, 17))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(closebutton))))
+                        .addGap(0, 49, Short.MAX_VALUE)))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(driverIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(totalPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(custNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6)
+                                .addComponent(roomStayingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(20, 20, 20)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(custPhoneNoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(daysStayedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clearDataButton)
+                    .addComponent(checkOutButton))
+                .addGap(22, 22, 22)
                 .addComponent(jLabel2)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         setVisible(false);
@@ -203,8 +399,7 @@ public class Checkout extends javax.swing.JFrame {
 
         try {
             // TODO add your handling code here:
-            //select data from rooms table
-
+            //select data from customers table
             ResultSet rs = SelectData.getData("SELECT *FROM CUSTOMERDETAILS");
             DefaultTableModel model = (DefaultTableModel) jTable.getModel();
 
@@ -222,9 +417,107 @@ public class Checkout extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Rooms.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_formComponentShown
+
+    private void driverIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_driverIdTextFieldActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_driverIdTextFieldActionPerformed
+
+    private void custPhoneNoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custPhoneNoTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custPhoneNoTextFieldActionPerformed
+
+    private void searchCustTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCustTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchCustTextFieldActionPerformed
+
+    private void roomStayingTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomStayingTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_roomStayingTextFieldActionPerformed
+
+    private void daysStayedTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daysStayedTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_daysStayedTextFieldActionPerformed
+
+    private void totalPriceTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalPriceTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_totalPriceTextFieldActionPerformed
+
+    //Customer Search Button
+    private void custSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custSearchButtonActionPerformed
+        String roomNo = searchCustTextField.getText().strip();
+        try {
+            ResultSet rs = SelectData.getData("SELECT *FROM CUSTOMERDETAILS WHERE ROOMNO = '" + roomNo + "' AND CHECKOUT is NUll");
+            if (rs.next()) {
+                custNameTextField.setText(rs.getString(2));
+                custPhoneNoTextField.setText(rs.getString(3));
+                driverIdTextField.setText(rs.getString(4));
+                roomStayingTextField.setText(rs.getString(8));
+                daysStayedTextField.setText(rs.getString(10));
+                
+                //Calculating the total room price of the user
+                int totalPrice = Integer.parseInt(rs.getString(5)) * Integer.parseInt(rs.getString(10));
+                totalPriceTextField.setText(String.valueOf(totalPrice));
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "ROOM IS NOT BOOKED OR DOES NOT EXIST");
+            }
+            
+            
+            
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        
+        
+        
+    }//GEN-LAST:event_custSearchButtonActionPerformed
+
+    //Clear button. Clears all the fieldss
+    private void clearDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearDataButtonActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        new Checkout().setVisible(true);
+    }//GEN-LAST:event_clearDataButtonActionPerformed
+
+    //Customer check out button
+    private void checkOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutButtonActionPerformed
+        //Getting all the details from the textfields
+        String name = custNameTextField.getText();
+        String phoneNo = custPhoneNoTextField.getText();
+        String driverId = driverIdTextField.getText();
+        String roomNo = roomStayingTextField.getText();
+        String daysStayed = daysStayedTextField.getText();
+        String totalPrice = totalPriceTextField.getText();
+        
+        
+        String query1 = "UDPATE CUSTOMERDETAILS SET TOTALAMOUNT = '" + totalPrice + "'";
+        String query2 = "UPDATE ROOMS SET STATUS = 'Not Booked WHERE ROOMNO = '" + roomNo + "'";
+        try {
+            
+            //Updating the rooms and the customer details when the customer has checked out
+            InsertUpdateDelete.setData(query1, "");
+            InsertUpdateDelete.setData(query2, "");
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Checkout.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
+        
+        String path = name + "Invoice.pdf";
+        
+    }//GEN-LAST:event_checkOutButtonActionPerformed
+
+    private void custNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_custNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_custNameTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,15 +557,30 @@ public class Checkout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton checkOutButton;
+    private javax.swing.JButton clearDataButton;
     private javax.swing.JButton closebutton;
+    private javax.swing.JTextField custNameTextField;
+    private javax.swing.JTextField custPhoneNoTextField;
+    private javax.swing.JButton custSearchButton;
+    private javax.swing.JTextField daysStayedTextField;
+    private javax.swing.JTextField driverIdTextField;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
+    private javax.swing.JTextField roomStayingTextField;
+    private javax.swing.JTextField searchCustTextField;
+    private javax.swing.JComboBox<String> searchSelectionComboBox;
+    private javax.swing.JTextField totalPriceTextField;
     // End of variables declaration//GEN-END:variables
 }

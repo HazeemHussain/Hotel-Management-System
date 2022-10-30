@@ -145,7 +145,7 @@ public class UsersSignup extends javax.swing.JFrame {
 
     private void createLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createLoginButtonActionPerformed
         // TODO add your handling code here:
-        
+
         String userName = userNameTextField.getText().strip();
         String password = passwordTextField.getText().strip();
 
@@ -153,20 +153,28 @@ public class UsersSignup extends javax.swing.JFrame {
         Query = "INSERT INTO USERLOGIN VALUES ( '" + userName + "', '" + password + "' )";
 
         if (userName.equals("") || password.equals("")) {
+            
+            //If all the fields are not filled
             JOptionPane.showMessageDialog(null, "Fill in both fields");
+            userNameTextField.setText("");
+            passwordTextField.setText("");
+            
+            
+            
         } else {
             try {
+                
+                //if the entry is successful
                 InsertUpdateDelete.setData(Query, "Sucessfully inserted");
-                //insert.setData(query, "Sucessfully inserted");
+                
+                //Going back to login page
+                setVisible(false);
+                new Login().setVisible(true);
+                
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-               
         }
-        
-        setVisible(false);
-        new Login().setVisible(true);
-
     }//GEN-LAST:event_createLoginButtonActionPerformed
 
     private void userNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTextFieldActionPerformed
