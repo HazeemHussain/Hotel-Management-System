@@ -42,8 +42,6 @@ public class CreateTables {
                 
                 //CREATE TABLE USERLOGIN  ( USERNAME  VARCHAR(50), PASSWORD VARCHAR(50) ) 
                 this.statement.addBatch("CREATE TABLE USERLOGIN  ( USERNAME  VARCHAR(50), PASSWORD VARCHAR(50) ) ");
-
-                //NEED TO INSERT USER LOGINS
                 //Adding values to the table
                 this.statement.addBatch("INSERT INTO USERLOGIN VALUES ('aut', 'aut123'), "
                         + "('hazeem', 'hazeem123') ");
@@ -64,10 +62,11 @@ public class CreateTables {
             this.statement = conn.createStatement();
             //Dropping table if it exists
             String newTable = "ROOMS";
-            //Calling existing table class to check if tables exits
+            
+           
             ExistingTable existing = new ExistingTable();
             boolean answer = existing.checkExistedTable(newTable);
-            
+             //IF table has been created then returning the table else creating the new table
             if (answer == true) {
                 return;
             } else {
@@ -94,6 +93,7 @@ public class CreateTables {
             ExistingTable existing = new ExistingTable();
             boolean answer = existing.checkExistedTable(newTable);
             
+            //IF table has been created then returning the table else creating the new table
             if (answer == true) {
                 return;
             } else {
@@ -123,7 +123,6 @@ public class CreateTables {
 
         obj1.createuserTable();
         obj1.createRoomsTable();
-        ///obj1.closeConnection();
         obj1.createCustomerTable();
     }
 

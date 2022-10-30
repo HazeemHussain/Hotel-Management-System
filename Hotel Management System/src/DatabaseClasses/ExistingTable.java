@@ -20,6 +20,7 @@ public class ExistingTable {
         conn = dbConnection.getConnection();
     }
 
+    //Checking if the tables exsits in the database
     public boolean checkExistedTable(String name) {
         try {
             var dbmd = this.conn.getMetaData();
@@ -35,6 +36,7 @@ public class ExistingTable {
                 if (tableName.equalsIgnoreCase(name)) {
                     //statement.executeUpdate("Drop table " + name);
 
+                    //Returning the table if the table exits
                     return true;
                 }
 

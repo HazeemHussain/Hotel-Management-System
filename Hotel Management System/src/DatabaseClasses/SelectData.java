@@ -38,13 +38,13 @@ public class SelectData {
     }
     
     //Testing this method
-    public static void main(String[] args) throws ClassNotFoundException {
-        String password = "123"; 
-        String userName = "aut";
-        
-      //  System.out.println(getData("SELECT *FROM USERLOGIN WHERE username = '"+userName+"' and password = '"+password+"'"));
-         ResultSet rs = getData("SELECT *FROM ROOMS");
-         System.out.println(rs);
-    }
+//    public static void main(String[] args) throws ClassNotFoundException {
+//        String password = "123"; 
+//        String userName = "aut";
+//        
+//      //  System.out.println(getData("SELECT *FROM USERLOGIN WHERE username = '"+userName+"' and password = '"+password+"'"));
+//         ResultSet rs = getData("SELECT *FROM ROOMS");
+//         System.out.println(rs);
+//    }
 
 }

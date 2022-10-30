@@ -64,7 +64,9 @@ public class InsertUpdateDelete {
         }
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    
+    //Testing method
+  //  public static void main(String[] args) throws ClassNotFoundException {
         
         //Inserting values into userlogin
 //        setData("INSERT INTO USERLOGIN VALUES ('aut', 'aut123'), "
@@ -100,5 +102,5 @@ public class InsertUpdateDelete {
 
 
                         
-    }
+   // }
 }
