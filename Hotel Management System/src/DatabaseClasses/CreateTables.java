@@ -7,6 +7,7 @@ package DatabaseClasses;
 import com.sun.jdi.connect.spi.Connection;
 import java.beans.Statement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import org.apache.derby.iapi.sql.PreparedStatement;
 import org.apache.derby.iapi.sql.ResultSet;
 
@@ -50,7 +51,7 @@ public class CreateTables {
             }
 
         } catch (Exception ex) {
-            System.out.println("SQL Exception " + ex.getMessage());
+             JOptionPane.showMessageDialog(null, "CLOSE THE PREVIOUS GUI");
         }
 
     }
@@ -77,7 +78,7 @@ public class CreateTables {
             }
 
         } catch (Exception ex) {
-            System.out.println("SQL Exception " + ex.getMessage());
+            System.out.println("CLOSE THE PREVIOUS GUI");
         }
 
     }
@@ -104,7 +105,7 @@ public class CreateTables {
             }
 
         } catch (Exception ex) {
-            System.out.println("SQL Exception" + ex.getMessage());
+              System.out.println("CLOSE THE PREVIOUS GUI");
         }
         
     }

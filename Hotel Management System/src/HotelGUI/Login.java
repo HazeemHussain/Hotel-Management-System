@@ -42,6 +42,7 @@ public class Login extends javax.swing.JFrame {
         signUpButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         closebutton = new javax.swing.JButton();
+        showPasswordBox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -52,12 +53,12 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 214, 35));
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel3.setText("USER NAME");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 100, -1));
+        jLabel3.setText("ENTER YOUR USER NAME");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 200, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel4.setText("PASSWORD");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 100, -1));
+        jLabel4.setText("ENTER YOUR PASSWORD");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 190, -1));
 
         userNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +82,7 @@ public class Login extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 130, -1));
+        getContentPane().add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 130, -1));
 
         signUpButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         signUpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Login button.png"))); // NOI18N
@@ -91,7 +92,10 @@ public class Login extends javax.swing.JFrame {
                 signUpButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 250, 140, -1));
+        getContentPane().add(signUpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 140, -1));
+
+        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 255));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 550));
 
         closebutton.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -102,6 +106,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(closebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, -1, -1));
+
+        showPasswordBox.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        showPasswordBox.setText("Show Password");
+        showPasswordBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPasswordBoxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(showPasswordBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,6 +188,15 @@ public class Login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_closebuttonActionPerformed
 
+    private void showPasswordBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordBoxActionPerformed
+        //Password check box
+        if (showPasswordBox.isSelected()) {
+            passwordTextField.setEchoChar((char) 0);
+        } else if (!showPasswordBox.isSelected()) {
+            passwordTextField.setEchoChar('*');
+        }
+    }//GEN-LAST:event_showPasswordBoxActionPerformed
+
     public static void run() {
          new Login().setVisible(true);
     }
@@ -222,6 +244,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordTextField;
+    private javax.swing.JCheckBox showPasswordBox;
     private javax.swing.JButton signUpButton;
     private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables

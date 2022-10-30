@@ -35,6 +35,7 @@ public final class DatabaseConnection {
             System.out.println(URL + "Connection Established");
             return conn; 
         } catch (SQLException ex) {
+            System.out.println("CLOSE THE PREVIOUS GUI");
             System.err.println("SQL Exception: " + ex.getMessage());
             return null; 
         }
